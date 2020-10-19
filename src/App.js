@@ -5,10 +5,20 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      
-      </header>
+     <table className="titleHeader">
+       <tbody>
+         <tr>
+           <td>
+            <img width="50" src="movie_icon.png"/>
+           </td>
+           <td width="8"/>
+           <td>
+             <h1>Movie Informer App</h1>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+     <input className="titleSearch" placeholder="Enter search here"/>
     </div>
   );
 }
