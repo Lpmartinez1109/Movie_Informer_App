@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
+import MovieRow from "./MovieRow.js";
 
 class App extends Component{
   constructor(props){
     super(props)
+    this.state={
+      
+    }
     console.log("This is a test")
-    const movies  =[
-      {id: 0, title:"Hello this is a test", overview:"this is a test!"},
-      {id:1, title: "Hello this is not a test", overview:"This is not a test!"}
-    ]
-    this.state = {
-      rows: [
-        <p key="1">This is a test</p>,
-        <p key="2">This is a test</p>,
-        <p key="3">This is a test</p>
-      ]}
-      var moviesRows =[];
-      movies.forEach((movie)=> {
-        console.log(movie.title)
-        const movieRow =<table>
-          <tbody>
-            <tr>
-              <td>
-                <img src=""/>
-              </td>
-              <td>
-                {movie.title}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        moviesRows.push(<p key={movie.id}>{movie.title} {movie.overview}</p>)
-      })
-      this.state ={rows: moviesRows}
+    // const movies  =[
+    //   {id: 0, poster_src:"", title:"Hello this is a test", overview:"this is a test!"},
+    //   {id:1, poster_src:"",  title: "Hello this is not a test", overview:"This is not a test!"}
+    // ]
+
+    //   var movieRows =[];
+    //   movies.forEach((movie)=> {
+    //     console.log(movie.title)
+    //     const movieRow =<MovieRow movie={movie} />
+    //     movieRows.push(movieRow)
+    //   })
+    //   this.state ={rows: movieRows}
+      this.movieSearch()
+  }
+  movieSearch(){
+    console.log("This is working too!")
   }
   render(){
   return (
