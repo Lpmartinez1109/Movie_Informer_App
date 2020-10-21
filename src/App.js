@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import MovieRow from "./MovieRow.js";
+import $ from "jquery";
 
 class App extends Component{
   constructor(props){
     super(props)
     this.state={
-      
+
     }
     console.log("This is a test")
     // const movies  =[
@@ -25,6 +26,24 @@ class App extends Component{
   }
   movieSearch(){
     console.log("This is working too!")
+    const URL = "https://api.themoviedb.org/3/search/movie?query=avengers&api_key=893c4ac2bf04e193ec65b6d4d79b7caf"
+    $.ajax({
+      url: URL,
+      success: (searchResults) => {
+        console.log("data search successful")
+        const results = searchResults.results
+        var movieRows = []
+        results.forEach((movie)=> {
+          console.log(movie.title)
+          const movieRow =<MovieRow movie={movie}/>
+          movieRows.push(movieRow)
+        })
+        this.setState({rows: movieRows})
+      },
+      error:(xhr,status, err )=>{
+        console.errpr("data search unsuccessful")
+      }
+    })
   }
   render(){
   return (
