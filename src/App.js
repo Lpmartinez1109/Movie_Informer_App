@@ -6,44 +6,40 @@ import $ from "jquery";
 class App extends Component{
   constructor(props){
     super(props)
-    this.state={
-
-    }
+    this.state={}
     console.log("This is a test")
-    // const movies  =[
-    //   {id: 0, poster_src:"", title:"Hello this is a test", overview:"this is a test!"},
-    //   {id:1, poster_src:"",  title: "Hello this is not a test", overview:"This is not a test!"}
-    // ]
-
-    //   var movieRows =[];
-    //   movies.forEach((movie)=> {
-    //     console.log(movie.title)
-    //     const movieRow =<MovieRow movie={movie} />
-    //     movieRows.push(movieRow)
-    //   })
-    //   this.state ={rows: movieRows}
       this.movieSearch()
   }
-  movieSearch(){
+  movieSearch(searchTerm){
+    // var searchTerm = "";
     console.log("This is working too!")
-    const URL = "https://api.themoviedb.org/3/search/movie?query=avengers&api_key=893c4ac2bf04e193ec65b6d4d79b7caf"
+    var API = "893c4ac2bf04e193ec65b6d4d79b7caf";
+    const URL = "https://api.themoviedb.org/3/search/movie?query=" + searchTerm +"&api_key=" + API;
     $.ajax({
       url: URL,
       success: (searchResults) => {
-        console.log("data search successful")
         const results = searchResults.results
+        
         var movieRows = []
+
         results.forEach((movie)=> {
-          console.log(movie.title)
-          const movieRow =<MovieRow movie={movie}/>
+
+          movie.poster_src = "https://image.tmdb.org/t/p/w500/" + movie.poster_path;
+          const movieRow =<MovieRow key={movie.id} movie={movie}/>
           movieRows.push(movieRow)
         })
         this.setState({rows: movieRows})
       },
       error:(xhr,status, err )=>{
-        console.errpr("data search unsuccessful")
+        console.error("data search unsuccessful")
       }
     })
+  }
+  userSearch(event){
+    console.log(event.target.value)
+    const boundObject = this
+    const searchTerm = event.target.value
+    boundObject.movieSearch(searchTerm)
   }
   render(){
   return (
@@ -61,7 +57,7 @@ class App extends Component{
          </tr>
        </tbody>
      </table>
-     <input className="titleSearch" placeholder="Enter search here"/>
+     <input className="titleSearch" onChange={this.userSearch.bind(this)} placeholder="Enter search here"/><input type="button" value="search" />
      {this.state.rows}
     </div>
   );
