@@ -6,15 +6,33 @@ class App extends Component{
     super(props)
     console.log("This is a test")
     const movies  =[
-      {id: 0, title:"Hello this is a test", overview:"this is a test!"}
+      {id: 0, title:"Hello this is a test", overview:"this is a test!"},
+      {id:1, title: "Hello this is not a test", overview:"This is not a test!"}
     ]
     this.state = {
       rows: [
         <p key="1">This is a test</p>,
         <p key="2">This is a test</p>,
         <p key="3">This is a test</p>
-      ]
-    }
+      ]}
+      var moviesRows =[];
+      movies.forEach((movie)=> {
+        console.log(movie.title)
+        const movieRow =<table>
+          <tbody>
+            <tr>
+              <td>
+                <img src=""/>
+              </td>
+              <td>
+                {movie.title}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        moviesRows.push(<p key={movie.id}>{movie.title} {movie.overview}</p>)
+      })
+      this.state ={rows: moviesRows}
   }
   render(){
   return (
