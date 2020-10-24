@@ -12,8 +12,21 @@
   padding-bottom: 8px;
   padding-left: 16px;
 }
+.viewBtn{
+  background-color: aqua;
+  border-radius: 20%;
+}
+.moviePoster{
+  border-radius: 100%;
+  position: relative;
+  width: 200px;
+  height: 200px;
 
-
+}
+.overviewSum{
+  line-height: 30px;
+  color: #7a7a7a;
+}
 
 .App {
   text-align: center;
