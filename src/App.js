@@ -19,6 +19,7 @@ class App extends Component{
       url: URL,
       success: (searchResults) => {
         const results = searchResults.results
+        console.log(results[0])
         
         var movieRows = []
 
