@@ -12,13 +12,19 @@ class MovieRow extends React.Component{
         <tbody>
           <tr>
             <td>
+              <div classname="column">
               <img className="moviePoster" alt={this.props.movie.original_title} width="120" src={this.props.movie.poster_src}/>
+              </div>
             </td>
             <td>
-             <h3 classname="movieTitle">{this.props.movie.title}</h3>
+             <div className="column">
+             <span classname="movieTitle">{this.props.movie.title}</span>
              <h4 className="releaseDate">Release Date: {this.props.movie.release_date}</h4>
+             </div>
+             <div classname="column">
               <p className="overviewSum">{this.props.movie.overview}</p>
               <input className="viewBtn" type="button" onClick={this.viewMovie.bind(this)} value="view" />
+              </div>
             </td>
           </tr>
         </tbody>
